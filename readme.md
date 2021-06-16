@@ -17,7 +17,7 @@ Recomiendo guardar el driver en la misma carpeta que dejen el código, y la últ
 
 ### Descripción
 
-Con este script es posible recolectar, desde el sitio web del SERVEL, los resultados preliminares de las votaciones, por comuna, en la segunda vuelta de Gobernadores.
+Con este script es posible recolectar, desde el sitio web del SERVEL, los resultados preliminares de las votaciones, por comuna, en la segunda vuelta de Gobernadores año 2021.
 
 El resultado es un archivo csv que contiene las mismas columnas visibles en el portal, más una columna que indica la comuna correspondiente.
 
