@@ -1,7 +1,9 @@
 """
+autor: samuelrg
+
 Recolección votaciones 2da vuelta.
-Datos preliminares sitio web del Servel
-Por defecto, al entrar al sitio, entra
+Datos preliminares sitio web del Servel.
+Por defecto, al entrar al sitio, entra a la info de la 2da vuelta
 """
 
 
@@ -23,36 +25,37 @@ from selenium.webdriver.support import expected_conditions as EC
 options = Options()
 options.add_argument('--headless')
 
-#web = webdriver.Firefox(firefox_options=options) # sin navegador
-web = webdriver.Firefox() # ver con navegador
+# sin navegador
+#web = webdriver.Firefox(firefox_options=options)
 
-
-time.sleep(1)
+# para ver con navegador
+web = webdriver.Firefox()
 web.get("https://www.servelelecciones.cl/")
+
 time.sleep(2)
 #
-# seleccionar Elecciones Consejales
+# seleccionar Elecciones Gobernadores 2da vuelta
 gobernadores = web.find_element_by_css_selector('li.hidden-xs:nth-child(1) > a:nth-child(1)')
 gobernadores.click()
-time.sleep(2)
+time.sleep(1.5)
 # click en regiones
 region = web.find_element_by_css_selector('#selRegion')
 region.click()
 # seleccionar opciones del elemento menu "region"
 nom_reg = Select(region)
 time.sleep(1.5)
-# Seleccionar RM
+# Seleccionar Region para extraer info
 RM = nom_reg.select_by_visible_text('METROPOLITANA DE SANTIAGO')
-#time.sleep(0.2)
+time.sleep(1.5)
 
-# extraer opciones de comunas de cada distrito
+# Entrar a menu Comunas
 comuna = web.find_element_by_css_selector('#selComunas')
 comuna.click()
 time.sleep(1)
 comuna1 = Select(comuna)
 comuna2 = comuna1.options
 
-# listado con ls nombrs de comunas que contiene el menu
+# crear lista con los nombres de comunas que contiene el menu
 comunas = []
 for i in comuna2:
     comunas.append(i.text)
@@ -65,6 +68,7 @@ comunas = [ele for ele in comunas if ele not in del_comunas]
 # recorrer lista de comunas
 
 data = []
+
 for comuna in comunas:
     # entrar a cada comuna
     comuna1.select_by_visible_text(comuna)
@@ -111,7 +115,7 @@ for comuna in comunas:
                        'Comuna':comuna})
 
     data.append(df)
-    time.sleep(1.5)
+
     print(f'Comuna: {comuna} recolectada.')
     print(df)
 
