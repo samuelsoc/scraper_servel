@@ -4,7 +4,7 @@ Este código se basa en otro mas profundo que desarrolle en mi trabajo, para ext
 
 ### Requisitos
 
-En mi caso, el SO es Debian 10, tengo un enviroment con las librerias necesarias, para este código serían:
+En mi caso, uso Debian 10, tengo un enviroment con las librerias necesarias, para este código serían:
 
 - Python 3.8
 - Selenium
